@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .page {
+            width: 90%;
+            margin: auto;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        .photo {
+            text-align: left;
+        }
+
+        .myphoto {
+            width: 30%;
+            vertical-align: top;
+        }
+
+        .img-group {
+            display: flex;
+
+        }
+
+        .item {
+            width: 0;
+            flex-grow: 1;
+        }
+
+        img {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        li{
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <section class="photo">
+            <img class="myphoto" src="" alt="">
+        </section>
+        <section class="intro">
+            <ul>
+                <li class="name list"></li>
+                <li class="school list"></li>
+                <li class="email liat"></li>
+                <li class="hobby list"></li>
+            </ul>
+        </section>
+        <section class="img-group">
+            <div class="item">
+                <img class="img" src="" alt="">
+            </div>
+            <div class="item">
+                <img class="img" src="" alt="">
+            </div>
+            <div class="item">
+                <img class="img" src="" alt="">
+            </div>
+        </section>
+    </div>
+    <script>
+        let myphotourl = "img/bhphoto.jpg";
+        document.querySelector(".myphoto").src = myphotourl;
+
+        let ps = {
+            name: "Ted",
+            school: "NCU",
+            email: "taihaoyan@gmail.com",
+            hobby: "Lie-Flat"
+        }
+
+        document.querySelector(".name").innerHTML = `姓名 : ${ps.name}`;
+        document.querySelector(".school").innerHTML = `學校 : ${ps.school}`;
+        document.querySelector(".email").innerHTML = `Email : ${ps.email}`;
+        document.querySelector(".hobby").innerHTML = `興趣 : ${ps.hobby}`;
+
+        let imgs = document.querySelectorAll(".img");
+        let imgArr = ["img/p01.gif", "img/p02.jpg", "img/p03.jpg"]
+        imgs.forEach((img, index) => {
+            img.src = imgArr[index]
+        });
+    </script>
+</body>
+
+</html>
