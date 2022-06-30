@@ -13,6 +13,10 @@
         top: 30%;
     }
 
+    .slideshow .box-content .title {
+        font-size: 60px;
+    }
+
     .info-items .row {
         display: flex;
 
@@ -20,7 +24,6 @@
 
     .product .row .col {
         width: 33.333333%;
-        padding: 5px;
     }
 
     .video-items .row {
