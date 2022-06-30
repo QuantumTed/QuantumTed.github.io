@@ -1,0 +1,32 @@
+footer{
+    text-align: center;
+    background-color: rgb(244, 244, 244);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+footer img{
+    vertical-align: bottom;
+}
+
+footer div{
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer ul {
+    justify-content: center;
+    display: flex;
+}
+
+footer ul li{
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: black;
+}
