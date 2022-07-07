@@ -174,12 +174,7 @@
             datas.forEach((data, index) => {
                 let tr = document.createElement("tr");
 
-                console.log(data);
-
-                console.log(typeof(data));
-
-
-                data.forEach(value => {
+                Object.values(data).forEach(value => {
                     let td = document.createElement("td");
                     td.innerText = value;
                     tr.append(td)
