@@ -43,7 +43,12 @@
             margin: auto;
             border: 2px white solid;
             height: 50px;
-
+        }
+        .no {
+            color: red;
+        }
+        .yes{
+            color: green;
         }
     </style>
 </head>
@@ -66,9 +71,9 @@
             <input onclick="typeNum('7')" class="btn typenum" type="button" value="7">
             <input onclick="typeNum('8')" class="btn typenum" type="button" value="8">
             <input onclick="typeNum('9')" class="btn typenum" type="button" value="9">
-            <input onclick="cancel()" class="btn" type="button" value="X">
+            <input onclick="cancel()" class="btn no" type="button" value="X">
             <input onclick="typeNum('0')" class="btn typenum" type="button" value="0">
-            <input onclick="check()" class="btn" type="button" value="V">
+            <input onclick="check()" class="btn yes" type="button" value="V">
         </div>
     </div>
 

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            justify-content: center;
+        }
+
+        .group {
+            margin-bottom: 20px;
+        }
+
+        .top-group {
+            display: flex;
+        }
+
+        .top-group button {
+            display: block;
+            flex-grow: 1;
+            height: 40px;
+        }
+
+        .bottom-group {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .bottom {
+            display: block;
+        }
+
+        .box {
+            display: flex;
+            height: 40px;
+            justify-content: center;
+        }
+
+        .box div {
+            display: flex;
+            height: 36px;
+            font-size: 20px;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 10%;
+            align-items: center;
+        }
+
+        .wrong {
+            background-color: red;
+            color: white;
+        }
+
+        .right {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-group group">
+            <button class="btn" onclick="start()">開始</button>
+            <button class="btn lock" onclick="giveUp()">放棄重來</button>
+            <button class="btn lock" onclick="lookAns()">看答案</button>
+        </div>
+        <div class="content-group group"></div>
+        <div class="bottom-group group">
+            <div class="bottom p">
+                猜答案
+            </div>
+            <div class="bottom text">
+                <input class="gnumtext" type="text">
+            </div>
+            <div class="bottom">
+                <button class="btn guess lock" onclick="guessNum()">猜!</button>
+            </div>
+        </div>
+
+        <script>
+            let ansArr, inputString
+            let x = 4
+
+            const content = document.querySelector('.content-group')
+            const gnumtext = document.querySelector('.gnumtext')
+            const lockbtns = document.querySelectorAll('.lock')
+
+            window.onload = function () {
+                clear()
+                lockbtn(true)
+            }
+
+            function start() {
+                lockbtn(false)
+                randNum()
+            }
+
+            function giveUp() {
+                lookAns()
+                randNum()
+            }
+
+            function lookAns() {
+                alert(`答案是: ${ansArr.join("")} ,你猜到了嘛??`)
+            }
+
+            function guessNum() {
+                inputString = gnumtext.value.split("")
+                if (inputString.length == 4) {
+                    if (checkNum(inputString)) {
+                        showInfo(inputString)
+                    }
+                    else { showAlert() }
+
+                }
+                else { showAlert() }
+                gnumtext.value = ""
+            }
+
+            function lockbtn(onoff) {
+                lockbtns.forEach((btn) => {
+                    btn.disabled = onoff;
+                })
+            }
+
+            function randNum() {
+                clear()
+                let json = {}
+                while (ansArr.length < x) {
+                    let k = Math.round(Math.random() * 9)
+                    if (!json[k]) {
+                        json[k] = true
+                        ansArr.push(k)
+                    }
+                }
+            }
+
+            function clear() {
+                ansArr = []
+                inputString = ""
+                gnumtext.value = ""
+                content.innerHTML = ""
+            }
+
+            function checkNum(Str) {
+                let json = {}
+                let garr = []
+                let y
+
+                Str.forEach((x, i) => {
+                    if (x == 0) {
+                        y = 0
+                    }
+                    else if (parseInt(x)) {
+                        y = parseInt(x)
+                    }
+
+                    if (!json[y]) {
+                        json[y] = true
+                        garr.push(y)
+                    }
+                })
+                if (garr.length != 4) {
+                    return false
+                }
+                return true
+            }
+
+            function showInfo(Str) {
+                let div = document.createElement("div")
+                let divab = document.createElement("div")
+                let divstr = document.createElement("div")
+
+                let a = 0
+                let b = 0
+                ansArr.forEach((x, i) => {
+                    if (x == Str[i]) {
+                        a += 1
+                    }
+                    else {
+                        Str.forEach(y => {
+                            if (x == y) {
+                                b += 1
+                            }
+                        })
+                    }
+                });
+                if (a == 4) {
+                    divab.className = "right"
+                }
+                else {
+                    divab.className = "wrong"
+                }
+                div.className = "box"
+                
+                divab.append(`${a}A${b}B`)
+                divstr.append(`${Str.join("")}`)
+                div.append(divab)
+                div.append(divstr)
+                content.append(div)
+            }
+
+            function showAlert() {
+                alert("輸入字數格式錯誤囉!!")
+            }
+
+        </script>
+
+    </div>
+</body>
+
+</html>
