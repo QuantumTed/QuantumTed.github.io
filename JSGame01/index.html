@@ -12,6 +12,7 @@
     <style>
         .container {
             max-width: 600px;
+            padding-top: 10px;
         }
 
         h1,
@@ -55,6 +56,7 @@
         .btn-group {
             display: flex;
             justify-content: center;
+            max-width: 600px;
         }
 
         #l-btn,
@@ -73,9 +75,11 @@
 </head>
 
 <body>
-    <h1>喜從天降</h1>
-    <h2>按下開始進行遊戲</h2>
-    <p>玩法:按下移動按鈕控制底部方塊左右，當上方方塊掉落時碰到底部方塊，即得分!!</p>
+    <div class="container">
+        <h1>喜從天降</h1>
+        <h2>按下開始進行遊戲</h2>
+        <p>玩法:按下移動按鈕控制底部方塊左右，當上方方塊掉落時碰到底部方塊，即得分!!</p>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -220,14 +224,15 @@
         </div>
     </div>
 
-    <div class="btn-group">
-        <button id="l-btn">向左移動</button>
-        <button id="r-btn">向右移動</button>
+    <div class="container">
+        <div class="btn-group">
+            <button id="l-btn">向左移動</button>
+            <button id="r-btn">向右移動</button>
+        </div>
+        <div class="btn-group">
+            <button id="s-btn">開始</button>
+        </div>
     </div>
-    <div class="btn-group">
-        <button id="s-btn">開始</button>
-    </div>
-
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
@@ -303,8 +308,6 @@
         function down() {
             let times = 1
             let alltime = gameTime / (speed / 1000)
-            h2.innerText = `剩下${gameTime}秒，${score}分`
-
             gameBoxs = arrX.map((x, index) => {
                 return {
                     x: x + 1,
@@ -345,7 +348,7 @@
                 if (times == alltime) {
                     h2.innerText = `遊戲結束，共得${score}分`
                 } else {
-                    h2.innerText = `剩下${parseInt(countdown)}秒，${score}分`
+                    h2.innerText = `剩下${parseInt(countdown) + 1}秒，${score}分`
                 }
                 times++
             }, speed)
